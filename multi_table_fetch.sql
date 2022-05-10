@@ -11,7 +11,9 @@ BEGIN
     DECLARE multi_table_fetch CURSOR FOR 
       SELECT DISTINCT TABLE_SCHEMA AS `database`
         FROM `information_schema`.TABLES
-       WHERE TABLE_SCHEMA NOT IN ('information_schema', 'performance_schema', 'mysql')
+	
+	-- select all tables except ('information_schema', 'performance_schema', 'mysql')
+        WHERE TABLE_SCHEMA NOT IN ('information_schema', 'performance_schema', 'mysql')
 
 
        ORDER BY TABLE_SCHEMA;
@@ -36,7 +38,11 @@ BEGIN
         LEAVE multi_table;
         END IF;
 
-        -- create an appropriate text string for a DDL or other SQL statement
+	-- main sql query to be executed for all tables
+	-- we assume all tables have 'id' and 'fullname' columns
+	-- order by id column descending so that we fetch newest records
+	-- we limit the query 10 rows maximum,   you may remove limitation
+	
         SET @s = CONCAT(@s, @union_append, ' ( SELECT "',dbname,'", `id`,`fullname` FROM  ',dbname,'.users ORDER BY id DESC LIMIT 0 , 10 ) ');
         
         SET @union_append = ' UNION ';
