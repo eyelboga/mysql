@@ -1,9 +1,10 @@
 BEGIN
 
 
-    -- declare variables for database and table names
+    -- declare variables for databases
+    
     DECLARE dbname VARCHAR(128) DEFAULT '';
-
+    
     DECLARE done INTEGER DEFAULT 0;
     
     -- declare cursor for list of tables
@@ -22,6 +23,7 @@ BEGIN
       
 
     -- declare NOT FOUND handler
+    
         DECLARE CONTINUE HANDLER 
         FOR NOT FOUND SET done = 1;
 	 
