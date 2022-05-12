@@ -12,10 +12,9 @@ BEGIN
       SELECT DISTINCT TABLE_SCHEMA AS `database`
         FROM `information_schema`.TABLES
 	
-	-- select all tables except ('information_schema', 'performance_schema', 'mysql')
+	-- select all databases except ('information_schema', 'performance_schema', 'mysql')
         WHERE TABLE_SCHEMA NOT IN ('information_schema', 'performance_schema', 'mysql')
-	
-	-- or to include custom databases ---> WHERE TABLE_SCHEMA IN ('mydatabase1', 'mydatabase2', 'mydatabase3')
+	-- or select databases: WHERE TABLE_SCHEMA IN ('mydatabase1', 'mydatabase2', 'mydatabase3')
 
 
        ORDER BY TABLE_SCHEMA;
