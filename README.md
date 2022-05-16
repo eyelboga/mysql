@@ -9,4 +9,4 @@ https://github.com/eyelboga/mysql/blob/main/multi_table_fetch.sql
 
 A linux shell script to backup a website's filesystem and database:
 
-https://github.com/eyelboga/mysql/blob/main/backup.mysql.db.sh
+https://github.com/eyelboga/mysql/blob/main/backup.website.sh
